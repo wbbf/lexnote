@@ -213,6 +213,23 @@ html{scroll-behavior:smooth}
 .wc{transition:opacity .7s,transform .7s,box-shadow .25s,border-color .25s}
 .wc.wide{grid-column:1/-1;background:linear-gradient(120deg,#EEF3FF 0%,#fff 60%);border-color:#C9D7F8}
 .wc.wide h4{font-size:22px}.wc.wide p{max-width:880px}
+
+.lk{display:flex;gap:30px;align-items:center;position:relative}
+.lkt{flex:1}.lkt p{max-width:none}
+.lkl{list-style:none;margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
+.lkl li{font-size:13.5px;color:#4B5563;line-height:1.55;background:#fff;border:1px solid #E3E7EE;border-radius:10px;padding:9px 12px}
+.lkl b{display:block;color:#1D4ED8;font-size:13px;margin-bottom:2px}
+.hub{width:420px;height:320px;flex:none;position:relative}
+.hub svg{position:absolute;inset:0;width:100%;height:100%}
+.ln2 path{stroke:#93B4FF;stroke-width:2;fill:none;stroke-dasharray:6 7;animation:flow 1.2s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-26}}
+.hc{position:absolute;left:210px;top:160px;transform:translate(-50%,-50%);width:92px;height:92px;border-radius:50%;background:#1D4ED8;color:#fff;font-weight:800;font-size:19px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 10px rgba(29,78,216,.12);animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(29,78,216,.35)}70%{box-shadow:0 0 0 22px rgba(29,78,216,0)}100%{box-shadow:0 0 0 0 rgba(29,78,216,0)}}
+.hn{position:absolute;transform:translate(-50%,-50%);background:#fff;border:1px solid #C9D7F8;border-radius:12px;padding:8px 12px;font-size:13px;font-weight:700;text-align:center;line-height:1.35;box-shadow:0 6px 16px rgba(17,24,39,.06);white-space:nowrap;animation:bob 3s ease-in-out infinite alternate}
+.hn small{font-weight:500;color:#6B7280;font-size:11px}
+.hn:nth-of-type(odd){animation-delay:-1.5s}
+@media (max-width:1000px){.lk{flex-direction:column}.lkl{grid-template-columns:1fr}.hub{transform:scale(.8);margin:-30px 0}}
+@media (max-width:440px){.hub{transform:scale(.72);margin:-46px -40px}}
 .cmp{margin-top:46px;border:1px solid #E3E7EE;border-radius:18px;overflow:hidden}
 .cmp .cr{display:grid;grid-template-columns:220px 1fr 1fr;border-top:1px solid #EEF1F6}
 .cmp .cr:first-child{border-top:none;background:#F6F8FB;font-size:13px;font-weight:700;color:#6B7280}
@@ -280,15 +297,28 @@ html{scroll-behavior:smooth}
 </div></div>
 
 <div class="why" id="why"><div class="wrap">
-  <div class="hd"><small>WHY LEXNOTE</small><h2>왜 렉스노트인가</h2><p>기능의 개수보다, 사무소에서 매일 쓰는 데 무엇이 다른지를 일곱 가지로 정리했습니다.</p></div>
+  <div class="hd"><small>WHY LEXNOTE</small><h2>왜 렉스노트인가</h2><p>기능의 개수보다, 사무소에서 매일 쓰는 데 무엇이 다른지를 여덟 가지로 정리했습니다.</p></div>
   <div class="wg">
     <div class="wc"><span class="no">01</span><span class="bd">현장 개발</span><h4>사무장이 매일 쓰면서<br>고쳐 온 프로그램</h4><p>실제 법무사 사무소의 사무장이 등기·송무·집행 사건을 처리하며 직접 쓰고, 막히는 곳을 그때그때 고쳐 왔습니다. 화면 순서가 실제 일하는 순서와 같습니다.</p><div class="ev">사무소 실사용 중 접수된 요청을 반영해 계속 판을 올리고 있습니다.</div></div>
     <div class="wc"><span class="no">02</span><span class="bd">서식 그대로</span><h4>등기 서류는<br>원본 서식에 값만 채웁니다</h4><p>표를 새로 그리지 않고 인터넷등기소 신청서 서식 원본에 내용을 채워 hwpx로 만듭니다. 손으로 다시 맞출 일이 줄어듭니다.</p><div class="ev">인터넷등기소에서 제공하는 신청서 양식을 원본으로 사용합니다.</div></div>
     <div class="wc"><span class="no">03</span><span class="bd">법령 기준</span><h4>세금·채권·송달료를<br>법령과 예규대로 계산</h4><p>취득세·등록면허세·국민주택채권·송달료를 현행 법령과 대법원 예규 기준으로 계산합니다. 근거 법령이 바뀌면 개정 소식을 알려 줍니다.</p><div class="ev">법제처 법령 정보로 근거 조문의 개정 여부를 확인합니다.</div></div>
-    <div class="wc"><span class="no">04</span><span class="bd">한 번 입력</span><h4>한 번 적은 정보가<br>끝까지 이어집니다</h4><p>의뢰인·거래처·부동산 정보를 한 번 입력하면 신청서, 비용 안내서, 영수증, 사건부, 전자세금계산서에 그대로 이어집니다.</p><div class="ev">주소는 도로명주소, 부동산 표시는 건축물대장에서 불러와 오기를 줄입니다.</div></div>
+    <div class="wc"><span class="no">04</span><span class="bd">자동 조회</span><h4>주소와 부동산 표시는<br>불러와서 채웁니다</h4><p>주소는 도로명주소에서, 부동산 표시는 건축물대장에서, 시가표준액은 공시가격에서 불러옵니다. 서류마다 손으로 옮겨 적다 생기는 오기를 줄입니다.</p><div class="ev">불러온 값은 화면에서 확인한 뒤에만 사건에 반영합니다.</div></div>
     <div class="wc"><span class="no">05</span><span class="bd">자동 정리</span><h4>받은 서류는<br>알아서 사건을 찾아갑니다</h4><p>접수증과 기일통지서를 읽어 맞는 사건이 하나면 바로 기일을 등록하고, 없거나 여럿이면 사람에게 확인을 받습니다. 알림은 7일 전·전날·당일.</p><div class="ev">자동 등록은 일치하는 사건이 정확히 1건일 때만 합니다.</div></div>
     <div class="wc"><span class="no">06</span><span class="bd">보안</span><h4>사무소 자료는<br>사무소 밖으로 나가지 않습니다</h4><p>사건 자료는 사무소 PC와 내부 저장소(NAS)에만 두고, 주민등록번호는 암호화해 보관합니다. 저장소가 꺼져도 읽기 전용으로 열어 볼 수 있습니다.</p><div class="ev">사건목록 화면과 사건부 인쇄물에는 주민등록번호 앞 6자리만 표시합니다.</div></div>
     <div class="wc wide"><span class="no">07</span><span class="bd">E-Form 자동입력</span><h4>인터넷등기소 E-Form 입력을 AI 브라우저 '어사이드'로 대신합니다</h4><p>렉스노트가 사건 정보로 E-Form 입력용 지시문을 만들어 복사해 줍니다. 인터넷등기소에 로그인한 화면에서 어사이드에 붙여 넣으면 신청인·부동산·등기원인 같은 칸을 차례로 채웁니다. 같은 내용을 다시 타이핑하지 않아도 되고, 로그인과 최종 제출은 담당자가 직접 확인하고 합니다.</p><div class="ev">지시문에는 사건에 이미 입력된 값만 들어가며, 공동인증서 로그인은 자동으로 하지 않습니다.</div></div>
+    <div class="wc wide link"><span class="no">08</span><span class="bd">메뉴 연동</span><h4>모든 메뉴가 하나의 사건으로 이어집니다</h4>
+      <div class="lk">
+        <div class="lkt"><p>렉스노트의 메뉴는 따로 노는 프로그램 모음이 아닙니다. 사건 하나를 중심으로 거래처·비용산출·등기자동화·사건부·영수증·세금계산서·기일 알림이 서로 값을 주고받습니다. 한 곳에서 고치면 연결된 곳에도 반영되어, 같은 내용을 여러 번 적거나 서로 다르게 적을 일이 없습니다.</p>
+          <ul class="lkl"><li><b>거래처 → 사건</b>의뢰인 이름·주소·사업자 정보가 사건에 들어감</li><li><b>비용산출 → 영수증·세금계산서</b>계산한 금액이 그대로 이어짐</li><li><b>사건 → 사건부</b>수임일 순으로 사건부 번호가 자동으로 붙음</li><li><b>기일통지서 → 사건 → 알림</b>읽은 기일이 사건과 알림에 함께 등록</li></ul>
+          <div class="ev">사건 상세·사건목록·사건부 세 곳의 정보가 서로 연동되어 한 곳만 고치면 됩니다.</div></div>
+        <div class="hub" aria-hidden="true">
+          <svg viewBox="0 0 420 320"><g class="ln2"><path d="M210 160 L70 50"/><path d="M210 160 L350 50"/><path d="M210 160 L40 165"/><path d="M210 160 L380 165"/><path d="M210 160 L80 275"/><path d="M210 160 L340 275"/></g></svg>
+          <div class="hc">사건</div>
+          <div class="hn" style="left:70px;top:50px">거래처</div><div class="hn" style="left:350px;top:50px">비용산출</div>
+          <div class="hn" style="left:40px;top:165px">등기자동화<br><small>E-Form</small></div><div class="hn" style="left:380px;top:165px">사건부</div>
+          <div class="hn" style="left:80px;top:275px">기일·알림</div><div class="hn" style="left:340px;top:275px">영수증<br><small>세금계산서</small></div>
+        </div>
+      </div></div>
   </div>
   <div class="cmp">
     <div class="cr"><div>업무</div><div>지금까지</div><div class="new">렉스노트</div></div>
