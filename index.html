@@ -147,25 +147,105 @@ html{scroll-behavior:smooth}
 .hint{font-size:13px;color:#6B7280;line-height:1.7;margin-top:14px;padding-top:14px;border-top:1px solid #EEF1F6}
 @media (max-width:1000px){.ab{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}.menu{display:flex;gap:14px;font-size:13px;overflow-x:auto}.nav .wrap{gap:12px}}
 @media (max-width:600px){.menu{display:none}.at{font-size:12px}}
+
+/* ===== 움직임 ===== */
+.hero{position:relative;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;z-index:0;animation:fl 14s ease-in-out infinite alternate}
+.blob.a{width:520px;height:520px;background:#C7D7FF;left:-120px;top:-160px}
+.blob.b{width:420px;height:420px;background:#D9F3E6;right:-80px;bottom:-200px;animation-delay:-6s}
+@keyframes fl{to{transform:translate(60px,40px) scale(1.08)}}
+.hero .wrap{position:relative;z-index:1}
+.hero h1 .w{display:inline-block;opacity:0;transform:translateY(24px);animation:up .7s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes up{to{opacity:1;transform:none}}
+.hero .fade{opacity:0;animation:up .8s .6s forwards}
+.hero .pts div{opacity:0;transform:translateX(-12px);animation:up .5s forwards}
+.win{animation:winin 1s .3s cubic-bezier(.2,.7,.2,1) both;position:relative}
+@keyframes winin{from{opacity:0;transform:translateY(40px) rotateX(8deg)}}
+.win tr+tr{opacity:0;transform:translateX(16px);animation:up .45s forwards}
+.float{position:absolute;background:#fff;border:1px solid #E3E7EE;border-radius:12px;box-shadow:0 14px 34px rgba(17,24,39,.14);padding:10px 14px;font-size:13px;display:flex;gap:9px;align-items:center;z-index:3;opacity:0;animation:pop .6s forwards, bob 4s ease-in-out infinite alternate}
+.float i{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:800;font-size:12px}
+.float small{display:block;font-size:11px;color:#6B7280}
+@keyframes pop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}
+@keyframes bob{to{translate:0 -8px}}
+.hwrap{flex:1;position:relative}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.fc,.sh,.ap,.st{transition:opacity .7s,transform .7s,box-shadow .25s,border-color .25s}
+.fc.in:hover,.ap.in:hover,.sh.in:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(17,24,39,.10);border-color:#C9D7F8}
+.fc .ic{transition:.3s}.fc:hover .ic{background:#1D4ED8;color:#fff;transform:rotate(-6deg) scale(1.08)}
+.flow .st.in i{animation:ping 1.6s ease-out}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(29,78,216,.5)}100%{box-shadow:0 0 0 14px rgba(29,78,216,0)}}
+.cta{display:inline-flex;gap:8px;align-items:center;margin-top:30px;height:50px;padding:0 24px;border-radius:12px;background:#1D4ED8;color:#fff;font-weight:700;font-size:16px;text-decoration:none;box-shadow:0 10px 24px rgba(29,78,216,.3);transition:.2s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(29,78,216,.38)}
+.cta span{display:inline-block;transition:.2s}.cta:hover span{transform:translateX(4px)}
+/* 시연 영상 */
+.demo{background:#0F172A;color:#fff;padding:84px 0;position:relative;overflow:hidden}
+.demo .hd small{color:#93B4FF}.demo .hd p{color:#A3AEC2}
+.dv{display:flex;gap:28px;align-items:flex-start}
+.tabs{width:300px;flex:none;display:flex;flex-direction:column;gap:12px}
+.tb{border:1px solid #26324A;border-radius:14px;padding:18px 20px;cursor:pointer;position:relative;overflow:hidden;transition:.25s;background:#131D33}
+.tb b{display:block;font-size:17px;margin-bottom:4px}.tb span{font-size:13px;color:#A3AEC2;line-height:1.6}
+.tb.on{border-color:#3B6CF0;background:#17244A}
+.tb .pg{position:absolute;left:0;bottom:0;height:3px;background:#5B8CFF;width:0}
+.screen{flex:1;border-radius:16px;overflow:hidden;border:1px solid #26324A;box-shadow:0 30px 80px rgba(0,0,0,.45);background:#000;position:relative}
+.screen .bar2{height:34px;background:#1C2740;display:flex;align-items:center;gap:7px;padding:0 14px}
+.screen .bar2 i{width:11px;height:11px;border-radius:50%;background:#3A4763;display:block}
+.screen .bar2 span{margin-left:10px;font-size:12px;color:#A3AEC2}
+.screen video{display:block;width:100%;aspect-ratio:16/9;background:#F6F8FB}
+.vnote{margin-top:14px;font-size:13px;color:#7D8AA3;text-align:right}
+@media (max-width:1000px){.dv{flex-direction:column-reverse}.tabs{width:auto}.float{display:none}}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.rv,.hero h1 .w,.hero .fade,.hero .pts div,.win tr+tr,.float{opacity:1!important;transform:none!important}}
+
+/* 특장점 */
+.why{padding:90px 0;background:#fff;border-bottom:1px solid #E3E7EE}
+.wg{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.wc{position:relative;border:1px solid #E3E7EE;border-radius:18px;padding:30px 28px 26px;background:linear-gradient(180deg,#fff 0%,#FAFBFE 100%);overflow:hidden}
+.wc .no{position:absolute;right:18px;top:6px;font-size:68px;font-weight:800;color:#EEF2FB;letter-spacing:-2px;line-height:1;transition:.3s}
+.wc:hover .no{color:#DCE6FF}
+.wc h4{position:relative;font-size:20px;font-weight:800;letter-spacing:-.4px;margin:14px 0 10px;line-height:1.4}
+.wc p{position:relative;font-size:14.5px;color:#4B5563;line-height:1.75}
+.wc .ev{position:relative;margin-top:16px;padding-top:14px;border-top:1px dashed #D5DBE5;font-size:13px;color:#047857;display:flex;gap:7px;align-items:flex-start;line-height:1.6}
+.wc .ev:before{content:"근거";flex:none;font-size:11px;font-weight:800;background:#E7F7EE;color:#047857;border-radius:6px;padding:1px 7px;margin-top:1px}
+.wc .bd{position:relative;display:inline-flex;height:26px;align-items:center;padding:0 10px;border-radius:13px;background:#EAF1FF;color:#1D4ED8;font-size:12px;font-weight:700}
+.wc:after{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:#1D4ED8;transition:width .5s}
+.wc.in:hover:after{width:100%}
+.wc.in:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(17,24,39,.10);border-color:#C9D7F8}
+.wc{transition:opacity .7s,transform .7s,box-shadow .25s,border-color .25s}
+.cmp{margin-top:46px;border:1px solid #E3E7EE;border-radius:18px;overflow:hidden}
+.cmp .cr{display:grid;grid-template-columns:220px 1fr 1fr;border-top:1px solid #EEF1F6}
+.cmp .cr:first-child{border-top:none;background:#F6F8FB;font-size:13px;font-weight:700;color:#6B7280}
+.cmp .cr>div{padding:15px 22px;font-size:14.5px;line-height:1.6}
+.cmp .cr>div+div{border-left:1px solid #EEF1F6}
+.cmp .cr>div:first-child{font-weight:700}
+.cmp .old{color:#6B7280}
+.cmp .new{color:#111827;font-weight:500}
+.cmp .cr:not(:first-child) .new:before{content:"✓";display:inline-flex;width:18px;height:18px;border-radius:5px;background:#1D4ED8;color:#fff;font-size:11px;font-weight:800;align-items:center;justify-content:center;margin-right:8px;vertical-align:1px}
+.cmp .cr:first-child .new{color:#1D4ED8}
+@media (max-width:1000px){.wg{grid-template-columns:1fr}.cmp .cr{grid-template-columns:1fr}.cmp .cr>div+div{border-left:none;border-top:1px dashed #EEF1F6}}
 </style></head>
 <body><div class="page" id="lexnote-home">
 
 <div class="nav"><div class="wrap">
   <div class="logo"><div class="mk">L</div><b>렉스노트</b><span>법무사 사무소 사건관리</span></div>
-  <div class="menu"><a href="#about">소개</a><a href="#features">주요 기능</a><a href="#screens">화면</a><a href="#opendata">공공데이터 활용</a><a href="#contact" class="q">문의</a></div>
+  <div class="menu"><a href="#about">소개</a><a href="#why">특장점</a><a href="#demo">시연 영상</a><a href="#features">주요 기능</a><a href="#screens">화면</a><a href="#opendata">공공데이터 활용</a><a href="#contact" class="q">문의</a></div>
 </div></div>
 
-<div class="hero"><div class="wrap">
+<div class="hero"><div class="blob a"></div><div class="blob b"></div><div class="wrap">
   <div class="txt">
     <span class="tag">Windows PC 프로그램</span> <span class="tag" style="background:#E7F7EE;color:#047857">현직 사무장이 직접 쓰며 다듬는 중</span>
-    <h1>법무사 사무소의 하루를<br><em>한 화면</em>에서 정리합니다</h1>
-    <p>렉스노트는 접수부터 등기 신청서 작성, 비용 계산, 임원 임기 관리, 회생·파산 서류까지 법무사 사무소 업무를 한곳에 모은 사건관리 프로그램입니다.</p>
+    <h1><span class="w" style="animation-delay:.05s">법무사</span> <span class="w" style="animation-delay:.15s">사무소의</span> <span class="w" style="animation-delay:.25s">하루를</span><br><em class="w" style="animation-delay:.4s">한 화면</em><span class="w" style="animation-delay:.5s">에서</span> <span class="w" style="animation-delay:.6s">정리합니다</span></h1>
+    <p class="fade">렉스노트는 접수부터 등기 신청서 작성, 비용 계산, 임원 임기 관리, 회생·파산 서류까지 법무사 사무소 업무를 한곳에 모은 사건관리 프로그램입니다.</p>
     <div class="pts">
-      <div><span class="ck">✓</span>사무소 PC와 내부 저장소에서만 동작</div>
-      <div><span class="ck">✓</span>법령·대법원 예규 기준의 비용 계산</div>
-      <div><span class="ck">✓</span>주소·건축물대장·공시가격 공공데이터 연동</div>
+      <div style="animation-delay:0.90s"><span class="ck">✓</span>사무소 PC와 내부 저장소에서만 동작</div>
+      <div style="animation-delay:1.05s"><span class="ck">✓</span>법령·대법원 예규 기준의 비용 계산</div>
+      <div style="animation-delay:1.20s"><span class="ck">✓</span>주소·건축물대장·공시가격 공공데이터 연동</div>
     </div>
+    <a class="cta" href="#demo">시연 영상 보기 <span>→</span></a>
   </div>
+  <div class="hwrap">
+  <div class="float" style="left:-50px;bottom:26px;animation-delay:1.8s,1.8s"><i style="background:#FDECEC;color:#B42318">기일</i><div><b>기일 등록됨</b><small>2026가단2345 · 11.26 10:30</small></div></div>
+  <div class="float" style="right:-26px;top:-22px;animation-delay:2.3s,2.3s"><i style="background:#E7F7EE;color:#047857">✓</i><div><b>서류 5개 완성</b><small>신청서 · 의사록 · 위임장</small></div></div>
+  <div class="float" style="right:-30px;bottom:-30px;animation-delay:2.8s,2.8s"><i style="background:#EAF1FF;color:#1D4ED8">₩</i><div><b>비용 3,777,000원</b><small>취득세 · 채권 · 보수 자동 계산</small></div></div>
   <div class="win">
     <div class="wbar"><i></i><i></i><i></i><span>렉스노트 — 사건목록</span></div>
     <div class="wbody">
@@ -192,6 +272,43 @@ html{scroll-behavior:smooth}
           <tr><td class="n">91번</td><td>11-04</td><td><span class="pl re">상업등기</span></td><td>임원변경</td><td>가상기술 주식회사</td><td><span class="pl gr">완료</span></td><td class="r">250,000</td></tr>
         </table>
       </div>
+    </div>
+  </div>
+  </div>
+</div></div>
+
+<div class="why" id="why"><div class="wrap">
+  <div class="hd"><small>WHY LEXNOTE</small><h2>왜 렉스노트인가</h2><p>기능의 개수보다, 사무소에서 매일 쓰는 데 무엇이 다른지를 정리했습니다.</p></div>
+  <div class="wg">
+    <div class="wc"><span class="no">01</span><span class="bd">현장 개발</span><h4>사무장이 매일 쓰면서<br>고쳐 온 프로그램</h4><p>실제 법무사 사무소의 사무장이 등기·송무·집행 사건을 처리하며 직접 쓰고, 막히는 곳을 그때그때 고쳐 왔습니다. 화면 순서가 실제 일하는 순서와 같습니다.</p><div class="ev">사무소 실사용 중 접수된 요청을 반영해 계속 판을 올리고 있습니다.</div></div>
+    <div class="wc"><span class="no">02</span><span class="bd">서식 그대로</span><h4>등기 서류는<br>원본 서식에 값만 채웁니다</h4><p>표를 새로 그리지 않고 인터넷등기소 신청서 서식 원본에 내용을 채워 hwpx로 만듭니다. 손으로 다시 맞출 일이 줄어듭니다.</p><div class="ev">인터넷등기소에서 제공하는 신청서 양식을 원본으로 사용합니다.</div></div>
+    <div class="wc"><span class="no">03</span><span class="bd">법령 기준</span><h4>세금·채권·송달료를<br>법령과 예규대로 계산</h4><p>취득세·등록면허세·국민주택채권·송달료를 현행 법령과 대법원 예규 기준으로 계산합니다. 근거 법령이 바뀌면 개정 소식을 알려 줍니다.</p><div class="ev">법제처 법령 정보로 근거 조문의 개정 여부를 확인합니다.</div></div>
+    <div class="wc"><span class="no">04</span><span class="bd">한 번 입력</span><h4>한 번 적은 정보가<br>끝까지 이어집니다</h4><p>의뢰인·거래처·부동산 정보를 한 번 입력하면 신청서, 비용 안내서, 영수증, 사건부, 전자세금계산서에 그대로 이어집니다.</p><div class="ev">주소는 도로명주소, 부동산 표시는 건축물대장에서 불러와 오기를 줄입니다.</div></div>
+    <div class="wc"><span class="no">05</span><span class="bd">자동 정리</span><h4>받은 서류는<br>알아서 사건을 찾아갑니다</h4><p>접수증과 기일통지서를 읽어 맞는 사건이 하나면 바로 기일을 등록하고, 없거나 여럿이면 사람에게 확인을 받습니다. 알림은 7일 전·전날·당일.</p><div class="ev">자동 등록은 일치하는 사건이 정확히 1건일 때만 합니다.</div></div>
+    <div class="wc"><span class="no">06</span><span class="bd">보안</span><h4>사무소 자료는<br>사무소 밖으로 나가지 않습니다</h4><p>사건 자료는 사무소 PC와 내부 저장소(NAS)에만 두고, 주민등록번호는 암호화해 보관합니다. 저장소가 꺼져도 읽기 전용으로 열어 볼 수 있습니다.</p><div class="ev">사건목록 화면과 사건부 인쇄물에는 주민등록번호 앞 6자리만 표시합니다.</div></div>
+  </div>
+  <div class="cmp">
+    <div class="cr"><div>업무</div><div>지금까지</div><div class="new">렉스노트</div></div>
+    <div class="cr"><div>사건 장부</div><div class="old">엑셀 파일을 담당자마다 따로 관리</div><div class="new">사건목록·사건부를 사무소 PC가 함께 봄</div></div>
+    <div class="cr"><div>등기 신청서</div><div class="old">지난 서류를 복사해 이름·주소를 고쳐 씀</div><div class="new">안건을 고르면 서식 원본에 자동으로 채움</div></div>
+    <div class="cr"><div>비용 계산</div><div class="old">세율표·계산기로 따로 계산해 옮겨 적음</div><div class="new">계산 결과가 견적서·영수증으로 바로 이어짐</div></div>
+    <div class="cr"><div>기일 관리</div><div class="old">통지서를 보고 달력에 손으로 적음</div><div class="new">통지서를 읽어 사건에 등록하고 미리 알림</div></div>
+    <div class="cr"><div>임원 임기</div><div class="old">만료일을 따로 메모해 두고 확인</div><div class="new">만료 순으로 보여 주고 안내문을 한꺼번에 작성</div></div>
+  </div>
+</div></div>
+
+<div class="demo" id="demo"><div class="wrap">
+  <div class="hd"><small>DEMO</small><h2>움직이는 화면으로 보기</h2><p>실제 업무 순서대로 짧게 담았습니다. 화면 속 이름·주소·금액은 모두 가상 자료입니다.</p></div>
+  <div class="dv">
+    <div class="tabs">
+      <div class="tb on" data-v="0"><b>비용산출</b><span>주소를 찾고 거래가액을 넣으면 세금·채권·보수가 한 번에 계산됩니다.</span><div class="pg"></div></div>
+      <div class="tb" data-v="1"><b>등기 서류 만들기</b><span>안건을 고르면 신청서·의사록·위임장이 서식에 맞춰 만들어집니다.</span><div class="pg"></div></div>
+      <div class="tb" data-v="2"><b>기일통지서 읽기</b><span>통지서를 읽어 사건을 찾아 기일을 등록하고 알림을 겁니다.</span><div class="pg"></div></div>
+    </div>
+    <div style="flex:1">
+      <div class="screen"><div class="bar2"><i></i><i></i><i></i><span id="vt">렉스노트 — 비용산출</span></div>
+        <video id="vid" src="demo1.mp4" poster="poster1.jpg" muted playsinline autoplay preload="auto"></video></div>
+      <div class="vnote">소리 없음 · 실제 프로그램 화면을 단순화한 시연입니다</div>
     </div>
   </div>
 </div></div>
@@ -355,4 +472,26 @@ html{scroll-behavior:smooth}
 
 <div class="foot"><div class="wrap"><span>© 2026 렉스노트 LexNote</span><span>이 페이지의 화면 예시는 모두 가상 자료입니다.</span></div></div>
 
-</div></body></html>
+</div>
+<script>
+(function(){
+ // 프로그램 창 표 줄 차례로 등장
+ document.querySelectorAll('.win tr+tr').forEach((r,i)=>r.style.animationDelay=(0.9+i*0.12)+'s');
+ // 숫자 올라가기
+ document.querySelectorAll('.kp b').forEach(b=>{const n=b.firstChild;const to=parseInt(n.textContent,10);let st=null;n.textContent='0';
+   setTimeout(()=>requestAnimationFrame(function f(t){st=st||t;const p=Math.min(1,(t-st)/900);n.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)}),900)});
+ // 스크롤 등장
+ const els=document.querySelectorAll('.hd,.fc,.sh,.ap,.st,.pr,.at,.note,.ct .l,.ct .r2,.flowt,.wc,.cmp .cr');
+ els.forEach(e=>e.classList.add('rv'));
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const sib=[...e.target.parentNode.children].filter(c=>c.classList.contains('rv'));e.target.style.transitionDelay=Math.min(sib.indexOf(e.target),6)*0.08+'s';e.target.classList.add('in');io.unobserve(e.target);setTimeout(()=>e.target.style.transitionDelay='',1400)}}),{threshold:.15});
+ els.forEach(e=>io.observe(e));
+ // 시연 영상 탭
+ const v=document.getElementById('vid'),tabs=[...document.querySelectorAll('.tb')],names=['비용산출','등기자동화','받은 서류 자동 정리'];let cur=0;
+ function show(i){cur=i;tabs.forEach((t,j)=>{t.classList.toggle('on',j===i);t.querySelector('.pg').style.width='0'});v.src='demo'+(i+1)+'.mp4';v.poster='poster'+(i+1)+'.jpg';document.getElementById('vt').textContent='렉스노트 — '+names[i];v.play().catch(()=>{})}
+ tabs.forEach((t,i)=>t.addEventListener('click',()=>show(i)));
+ v.addEventListener('timeupdate',()=>{if(v.duration)tabs[cur].querySelector('.pg').style.width=(v.currentTime/v.duration*100)+'%'});
+ v.addEventListener('ended',()=>setTimeout(()=>show((cur+1)%3),900));
+ new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?v.play().catch(()=>{}):v.pause()),{threshold:.3}).observe(v);
+})();
+</script>
+</body></html>
