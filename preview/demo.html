@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>렉스노트 시연</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-kr@5.0.19/korean-400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-kr@5.0.19/korean-500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-kr@5.0.19/korean-700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-kr@5.0.19/korean-800.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1280px;height:720px;overflow:hidden;font-family:'Noto Sans KR',sans-serif;background:#F6F8FB;color:#111827;position:relative}
+.app{position:absolute;inset:0;display:flex}
+.side{width:210px;background:#fff;border-right:1px solid #E3E7EE;padding:22px 14px;display:flex;flex-direction:column;gap:4px}
+.lg{display:flex;gap:9px;align-items:center;margin:0 6px 20px}.lg i{width:30px;height:30px;border-radius:8px;background:#1D4ED8;color:#fff;font-style:normal;font-weight:800;display:flex;align-items:center;justify-content:center}.lg b{font-size:18px}
+.m{font-size:14px;color:#4B5563;padding:9px 12px;border-radius:9px;display:flex;gap:9px;align-items:center}
+.m:before{content:"";width:12px;height:12px;border:1.5px solid #C2C9D4;border-radius:3px}
+.m.on{background:#EAF1FF;color:#1D4ED8;font-weight:700}.m.on:before{background:#1D4ED8;border-color:#1D4ED8}
+.main{flex:1;padding:26px 30px;position:relative}
+h2{font-size:24px;font-weight:800}.sub{font-size:13px;color:#6B7280;margin:4px 0 18px}
+.card{background:#fff;border:1px solid #E3E7EE;border-radius:14px;padding:18px 20px}
+.row{display:flex;gap:16px}
+.f{display:flex;flex-direction:column;gap:6px;flex:1}
+.f label{font-size:12px;color:#6B7280;font-weight:500}
+.in{height:40px;border:1px solid #D5DBE5;border-radius:9px;padding:0 12px;display:flex;align-items:center;font-size:15px;background:#fff;transition:.2s}
+.in.foc{border-color:#1D4ED8;box-shadow:0 0 0 3px #DCE6FF}
+.in .cur{display:inline-block;width:1.5px;height:18px;background:#1D4ED8;margin-left:1px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.btn{height:40px;padding:0 18px;border-radius:9px;background:#1D4ED8;color:#fff;font-weight:700;font-size:14px;display:inline-flex;align-items:center;transition:.15s}
+.btn.g{background:#fff;color:#1D4ED8;border:1px solid #C9D7F8}
+.btn.press{transform:scale(.95);filter:brightness(.9)}
+.ln{display:flex;justify-content:space-between;padding:10px 4px;border-bottom:1px solid #EEF1F6;font-size:15px;opacity:0;transform:translateY(8px);transition:.35s}
+.ln.show{opacity:1;transform:none}
+.ln span{color:#6B7280}.ln b{font-variant-numeric:tabular-nums}
+.tot{display:flex;justify-content:space-between;padding:14px 4px 0;margin-top:6px;border-top:2px solid #111827;font-size:20px;font-weight:800;opacity:0;transition:.4s}
+.tot.show{opacity:1}.tot b{color:#1D4ED8}
+.cursor{position:absolute;left:640px;top:400px;width:22px;height:22px;z-index:50;transition:left .7s cubic-bezier(.4,0,.2,1),top .7s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.ripple{position:absolute;width:40px;height:40px;border-radius:50%;background:rgba(29,78,216,.25);z-index:49;transform:translate(-50%,-50%) scale(0);animation:rp .5s ease-out forwards}
+@keyframes rp{to{transform:translate(-50%,-50%) scale(1.6);opacity:0}}
+.drop{position:absolute;left:0;right:0;top:44px;background:#fff;border:1px solid #E3E7EE;border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.1);display:none;z-index:5}
+.drop div{padding:10px 12px;font-size:14px}.drop div.h{background:#EAF1FF}
+.chk{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid #E3E7EE;border-radius:10px;font-size:15px;background:#fff;transition:.2s}
+.chk i{width:18px;height:18px;border:1.5px solid #C2C9D4;border-radius:5px;display:flex;align-items:center;justify-content:center;font-style:normal;color:#fff;font-size:12px;transition:.2s}
+.chk.on{border-color:#1D4ED8;background:#F5F8FF}.chk.on i{background:#1D4ED8;border-color:#1D4ED8}
+.bar{height:10px;border-radius:5px;background:#EEF1F6;overflow:hidden}.bar div{height:100%;width:0;background:#1D4ED8;transition:width 2s linear}
+.file{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid #E3E7EE;border-radius:10px;background:#fff;opacity:0;transform:translateX(-12px);transition:.35s}
+.file.show{opacity:1;transform:none}
+.file .ic{width:34px;height:40px;border-radius:5px;background:#EAF1FF;color:#1D4ED8;font-size:10px;font-weight:800;display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px}
+.file .ok{margin-left:auto;color:#047857;font-weight:700;font-size:13px}
+.toast{position:absolute;right:30px;bottom:30px;background:#111827;color:#fff;padding:14px 20px;border-radius:12px;font-size:15px;opacity:0;transform:translateY(16px);transition:.4s;display:flex;gap:10px;align-items:center}
+.toast.show{opacity:1;transform:none}.toast i{width:22px;height:22px;border-radius:50%;background:#10B981;font-style:normal;display:flex;align-items:center;justify-content:center;font-size:12px}
+.doc{width:300px;height:400px;background:#fff;border:1px solid #D5DBE5;border-radius:6px;box-shadow:0 12px 30px rgba(0,0,0,.08);padding:26px 24px;position:relative;overflow:hidden;opacity:0;transform:translateY(-40px) rotate(-3deg);transition:.6s}
+.doc.show{opacity:1;transform:none}
+.doc h4{text-align:center;font-size:17px;margin-bottom:18px;letter-spacing:4px}
+.doc p{font-size:12px;line-height:2;color:#374151}
+.doc .hl{border-radius:3px;transition:.3s}.doc .hl.on{background:#FEF3C7;box-shadow:0 0 0 2px #FCD34D}
+.scan{position:absolute;left:0;right:0;height:60px;top:-60px;background:linear-gradient(180deg,transparent,rgba(29,78,216,.18),transparent)}
+.scan.go{animation:sc 1.8s linear}
+@keyframes sc{to{top:400px}}
+.kv{display:flex;padding:11px 4px;border-bottom:1px solid #EEF1F6;font-size:15px;opacity:0;transition:.35s}.kv.show{opacity:1}
+.kv span{width:110px;color:#6B7280}
+.case{margin-top:16px;padding:14px 16px;border-radius:10px;border:2px solid #1D4ED8;background:#F5F8FF;opacity:0;transition:.4s}.case.show{opacity:1}
+.pl{display:inline-block;padding:3px 9px;border-radius:10px;font-size:12px;font-weight:700;background:#FDECEC;color:#B42318}
+.cap{position:absolute;left:240px;top:16px;background:#1D4ED8;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:14px;opacity:0;transition:.4s;z-index:60}
+.cap.show{opacity:1}
+</style></head><body>
+<div class="app">
+  <div class="side">
+    <div class="lg"><i>L</i><b>렉스노트</b></div>
+    <div class="m">사건부</div><div class="m" id="m-list">사건목록</div><div class="m">임원 임기관리</div><div class="m" id="m-reg">등기자동화</div><div class="m">회생·파산</div><div class="m" id="m-cost">비용산출</div><div class="m">이자·원리금 계산</div><div class="m">거래처</div>
+  </div>
+  <div class="main" id="stage"></div>
+</div>
+<svg class="cursor" id="cur" viewBox="0 0 24 24"><path d="M3 2l7.5 19 2.6-7.9L21 10.5z" fill="#111827" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+<div class="toast" id="toast"><i>✓</i><span></span></div>
+<script>
+const W=ms=>new Promise(r=>setTimeout(r,ms));
+const $=s=>document.querySelector(s);
+const cur=$('#cur');
+async function moveTo(el,dx=0.5,dy=0.6){const r=el.getBoundingClientRect();cur.style.left=(r.left+r.width*dx)+'px';cur.style.top=(r.top+r.height*dy)+'px';await W(750)}
+async function click(el){await moveTo(el);const r=document.createElement('div');r.className='ripple';r.style.left=cur.style.left;r.style.top=cur.style.top;document.body.appendChild(r);el.classList.add('press');await W(160);el.classList.remove('press');setTimeout(()=>r.remove(),600);await W(200)}
+async function type(el,txt,sp=70){el.classList.add('foc');el.innerHTML='<span class="t"></span><span class="cur"></span>';const t=el.querySelector('.t');for(const ch of txt){t.textContent+=ch;await W(sp)}await W(250);el.querySelector('.cur').remove();el.classList.remove('foc')}
+function count(el,to,ms=700){const s=performance.now();const f=n=>{const p=Math.min(1,(n-s)/ms);el.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString('ko-KR');if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+async function toast(msg){$('#toast span').textContent=msg;$('#toast').classList.add('show');await W(2200)}
+const scene=new URLSearchParams(location.search).get('s')||'1';
+
+async function s1(){
+  $('#m-cost').classList.add('on');
+  $('#stage').innerHTML=`<h2>비용산출</h2><div class="sub">소유권이전(매매) · 가상 자료</div>
+  <div class="card" style="margin-bottom:16px"><div class="row">
+    <div class="f" style="flex:1.6;position:relative"><label>부동산 소재지</label><div class="in" id="addr"></div><div class="drop" id="drop"><div class="h">가상시 가상구 가상로 12 (가상동)</div><div>가상시 가상구 가상로 12번길 3</div></div></div>
+    <div class="f"><label>거래가액(원)</label><div class="in" id="price"></div></div>
+    <div class="f" style="flex:none;justify-content:flex-end"><span class="btn" id="calc">계산</span></div>
+  </div></div>
+  <div class="card" id="res">
+    <div class="ln"><span>취득세</span><b data-v="3000000">0</b></div>
+    <div class="ln"><span>지방교육세</span><b data-v="300000">0</b></div>
+    <div class="ln"><span>국민주택채권 할인 부담액</span><b data-v="112000">0</b></div>
+    <div class="ln"><span>등기신청수수료</span><b data-v="15000">0</b></div>
+    <div class="ln"><span>보수</span><b data-v="350000">0</b></div>
+    <div class="tot"><span>합계</span><b id="sum">0</b></div>
+  </div>`;
+  await W(500);await click($('#addr'));await type($('#addr'),'가상로 12',90);
+  $('#drop').style.display='block';await W(500);await click($('#drop .h'));$('#drop').style.display='none';$('#addr').textContent='가상시 가상구 가상로 12 (가상동)';
+  await click($('#price'));await type($('#price'),'300,000,000',75);
+  await click($('#calc'));
+  for(const l of document.querySelectorAll('.ln')){l.classList.add('show');count(l.querySelector('b'),+l.querySelector('b').dataset.v);await W(320)}
+  await W(300);$('.tot').classList.add('show');count($('#sum'),3777000,900);await W(900);
+  await toast('견적서를 인쇄할 수 있습니다');
+}
+async function s2(){
+  $('#m-reg').classList.add('on');
+  $('#stage').innerHTML=`<h2>등기자동화</h2><div class="sub">상업등기 · 주식회사 가상물산 · 가상 자료</div>
+  <div class="row"><div style="flex:1;display:flex;flex-direction:column;gap:10px">
+    <div class="card" style="padding:14px 16px;font-size:13px;color:#6B7280">안건 고르기</div>
+    <div class="chk" id="c1"><i>✓</i>본점이전(관할 외)</div>
+    <div class="chk" id="c2"><i>✓</i>임원변경(중임)</div>
+    <div class="chk" id="c3"><i>✓</i>목적변경</div>
+    <div class="chk"><i>✓</i>상호변경</div>
+    <div style="margin-top:6px"><span class="btn" id="mk">서류 만들기</span></div>
+  </div>
+  <div style="flex:1.2;display:flex;flex-direction:column;gap:10px">
+    <div class="card" style="padding:14px 16px"><div style="font-size:13px;color:#6B7280;margin-bottom:10px">만드는 중</div><div class="bar"><div id="bar"></div></div></div>
+    <div class="file"><div class="ic">HWPX</div><div><b style="font-size:15px">등기신청서</b><div style="font-size:12px;color:#6B7280">인터넷등기소 서식</div></div><span class="ok">완료</span></div>
+    <div class="file"><div class="ic">HWPX</div><div><b style="font-size:15px">임시주주총회 의사록</b><div style="font-size:12px;color:#6B7280">안건 3개 반영</div></div><span class="ok">완료</span></div>
+    <div class="file"><div class="ic">HWPX</div><div><b style="font-size:15px">이사회 의사록</b><div style="font-size:12px;color:#6B7280">본점이전 결의</div></div><span class="ok">완료</span></div>
+    <div class="file"><div class="ic">HWPX</div><div><b style="font-size:15px">위임장</b><div style="font-size:12px;color:#6B7280">대표이사 기명날인란</div></div><span class="ok">완료</span></div>
+    <div class="file"><div class="ic">PDF</div><div><b style="font-size:15px">비용 안내서</b><div style="font-size:12px;color:#6B7280">의뢰인 전달용</div></div><span class="ok">완료</span></div>
+  </div></div>`;
+  await W(500);
+  for(const id of ['c1','c2','c3']){await click($('#'+id));$('#'+id).classList.add('on');await W(150)}
+  await click($('#mk'));$('#bar').style.width='100%';
+  for(const f of document.querySelectorAll('.file')){await W(380);f.classList.add('show')}
+  await W(500);await toast('서류 5개를 만들었습니다');
+}
+async function s3(){
+  $('#m-list').classList.add('on');
+  $('#stage').innerHTML=`<h2>받은 서류 자동 정리</h2><div class="sub">기일통지서를 읽어 사건에 기일을 등록 · 가상 자료</div>
+  <div class="row" style="gap:28px;align-items:flex-start">
+    <div class="doc" id="doc"><div class="scan" id="scan"></div><h4>변론기일통지서</h4>
+      <p>사　　건 <span class="hl" id="h1">2026가단2345 대여금</span><br>원　　고 박가상<br>피　　고 오가상<br><br>위 사건의 변론기일이 다음과 같이 지정되었으니 출석하시기 바랍니다.<br><br>일　　시 <span class="hl" id="h2">2026. 11. 26. 10:30</span><br>장　　소 <span class="hl" id="h3">가상지방법원 제301호 법정</span><br><br><br>2026. 11. 5.<br>가상지방법원 법원주사</p></div>
+    <div style="flex:1">
+      <div class="card">
+        <div class="kv" id="k1"><span>사건번호</span><b>2026가단2345</b></div>
+        <div class="kv" id="k2"><span>기일</span><b>2026-11-26 (목) 10:30</b></div>
+        <div class="kv" id="k3"><span>장소</span><b>가상지방법원 제301호 법정</b></div>
+      </div>
+      <div class="case" id="case"><div style="font-size:12px;color:#1D4ED8;font-weight:700;margin-bottom:4px">일치하는 사건 1건</div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:16px">대여금 · 박가상</b><span class="pl">기일 11.26</span></div>
+        <div style="font-size:13px;color:#6B7280;margin-top:6px">알림: 7일 전 · 전날 · 당일</div></div>
+    </div>
+  </div>`;
+  cur.style.left='900px';cur.style.top='600px';
+  await W(400);$('#doc').classList.add('show');await W(800);$('#scan').classList.add('go');
+  for(const i of [1,2,3]){await W(520);$('#h'+i).classList.add('on');$('#k'+i).classList.add('show')}
+  await W(600);$('#case').classList.add('show');await W(700);
+  await toast('기일을 등록했습니다');
+}
+window.done=false;({1:s1,2:s2,3:s3})[scene]().then(async()=>{await W(600);window.done=true});
+</script></body></html>
