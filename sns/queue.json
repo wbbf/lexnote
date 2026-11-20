@@ -39,7 +39,15 @@
   "status": "pending"
  },
  {
-  "date": "2026-11-21",
+  "date": "2026-11-20",
+  "slot": "evening",
+  "type": "REELS",
+  "file": "life/r3.mp4",
+  "status": "pending",
+  "caption": "빌려준 돈에도 유효기간이 있습니다.\n일반 채권은 10년간 행사하지 않으면 소멸시효가 완성되고(민법 제162조 제1항), 상행위로 생긴 채권은 5년입니다(상법 제64조). 이자·급료·공사대금 등은 3년(민법 제163조), 숙박료·음식료 등은 1년(민법 제164조)의 단기시효가 적용됩니다.\n일반 안내이며 개별 사안은 전문가와 상담하세요.\n\n#렉스노트 #법률상식 #생활법률 #법무사"
+ },
+ {
+  "date": "2026-11-20",
   "slot": "evening",
   "type": "IMAGE",
   "file": "life/l3.jpg",
@@ -54,7 +62,7 @@
   "status": "pending"
  },
  {
-  "date": "2026-11-22",
+  "date": "2026-11-21",
   "slot": "evening",
   "type": "IMAGE",
   "file": "life/l4.jpg",
@@ -69,7 +77,7 @@
   "status": "pending"
  },
  {
-  "date": "2026-11-23",
+  "date": "2026-11-22",
   "slot": "evening",
   "type": "IMAGE",
   "file": "life/l5.jpg",
@@ -84,7 +92,7 @@
   "status": "pending"
  },
  {
-  "date": "2026-11-24",
+  "date": "2026-11-23",
   "slot": "evening",
   "type": "IMAGE",
   "file": "life/l6.jpg",
@@ -99,7 +107,7 @@
   "status": "pending"
  },
  {
-  "date": "2026-11-25",
+  "date": "2026-11-24",
   "slot": "evening",
   "type": "IMAGE",
   "file": "life/l7.jpg",
@@ -114,7 +122,7 @@
   "status": "pending"
  },
  {
-  "date": "2026-11-26",
+  "date": "2026-11-25",
   "slot": "evening",
   "type": "IMAGE",
   "file": "life/l8.jpg",
