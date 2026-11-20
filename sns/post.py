@@ -41,7 +41,7 @@ def publish(item):
 
 def main():
     args = sys.argv[1:]
-    today = (datetime.datetime.utcnow() + datetime.timedelta(hours=9)).strftime("%Y-%m-%d")
+    today = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=9)).strftime("%Y-%m-%d")
     if "--date" in args: today = args[args.index("--date") + 1]
     q = json.load(open(QF, encoding="utf-8"))
     todo = [x for x in q if x["date"] == today and x["status"] == "pending"]
@@ -52,7 +52,7 @@ def main():
         if "--dry" in args: print("올릴 예정:", x["file"]); continue
         mid, link = publish(x)
         x.update(status="posted", media_id=mid, permalink=link,
-                 posted_at=datetime.datetime.utcnow().isoformat() + "Z")
+                 posted_at=datetime.datetime.now(datetime.timezone.utc).isoformat())
         print("게시 완료:", x["file"], link)
     json.dump(q, open(QF, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     left = sum(1 for x in q if x["status"] == "pending")
