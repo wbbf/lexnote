@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """렉스노트 인스타그램 자동 게시. queue.json에서 오늘(한국 시각) 몫을 찾아 올린다.
-사용: python3 sns/post.py [--date YYYY-MM-DD] [--slot morning|evening] [--dry]
+사용: python3 sns/post.py [--date YYYY-MM-DD] [--slot morning|evening] [--dry] [--check]
 오전 몫은 slot 없음 또는 "morning", 저녁 몫(생활 법률상식)은 slot "evening".
 토큰: 환경 변수 INSTAGRAM_ACCESS_TOKEN (시스템 사용자 토큰, 만료 없음)
 사진·영상은 GitHub Pages 공개 주소에서 인스타그램이 가져간다(먼저 push 되어 있어야 함)."""
@@ -12,7 +12,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 QF = os.path.join(HERE, "queue.json")
 
 def call(method, path, **params):
-    tok = os.environ["INSTAGRAM_ACCESS_TOKEN"]
+    tok = os.environ.get("INSTAGRAM_ACCESS_TOKEN", "").strip().strip('"').strip("'")
     data = urllib.parse.urlencode(params).encode()
     url = f"{API}/{path}"
     if method == "GET":
@@ -42,6 +42,11 @@ def publish(item):
 
 def main():
     args = sys.argv[1:]
+    if "--check" in args:                    # 토큰 점검: 값은 출력하지 않고 계정 조회만
+        tok = os.environ.get("INSTAGRAM_ACCESS_TOKEN", "").strip().strip('"').strip("'")
+        print(f"토큰 길이 {len(tok)}, 앞 3글자 형태 {'EAA' if tok.startswith('EAA') else '다름'}")
+        r = call("GET", IG, fields="username")
+        print("토큰 정상: 계정", r.get("username")); return
     today = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=9)).strftime("%Y-%m-%d")
     if "--date" in args: today = args[args.index("--date") + 1]
     slot = args[args.index("--slot") + 1] if "--slot" in args else "morning"
