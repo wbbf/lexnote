@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """렉스노트 인스타그램 자동 게시. queue.json에서 오늘(한국 시각) 몫을 찾아 올린다.
-사용: python3 sns/post.py [--date YYYY-MM-DD] [--dry]
+사용: python3 sns/post.py [--date YYYY-MM-DD] [--slot morning|evening] [--dry]
+오전 몫은 slot 없음 또는 "morning", 저녁 몫(생활 법률상식)은 slot "evening".
 토큰: 환경 변수 INSTAGRAM_ACCESS_TOKEN (시스템 사용자 토큰, 만료 없음)
 사진·영상은 GitHub Pages 공개 주소에서 인스타그램이 가져간다(먼저 push 되어 있어야 함)."""
 import json, os, sys, time, urllib.request, urllib.parse, datetime
@@ -43,11 +44,13 @@ def main():
     args = sys.argv[1:]
     today = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=9)).strftime("%Y-%m-%d")
     if "--date" in args: today = args[args.index("--date") + 1]
+    slot = args[args.index("--slot") + 1] if "--slot" in args else "morning"
     q = json.load(open(QF, encoding="utf-8"))
-    todo = [x for x in q if x["date"] == today and x["status"] == "pending"]
+    todo = [x for x in q if x["date"] == today and x["status"] == "pending"
+            and x.get("slot", "morning") == slot]
     if not todo:
-        left = [x["date"] for x in q if x["status"] == "pending"]
-        print(f"{today}: 올릴 것 없음. 남은 예약 {len(left)}건 {left[:3]}"); return
+        left = [x["date"] for x in q if x["status"] == "pending" and x.get("slot", "morning") == slot]
+        print(f"{today} {slot}: 올릴 것 없음. 남은 예약 {len(left)}건 {left[:3]}"); return
     for x in todo:
         if "--dry" in args: print("올릴 예정:", x["file"]); continue
         mid, link = publish(x)
