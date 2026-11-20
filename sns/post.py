@@ -44,7 +44,7 @@ def main():
     args = sys.argv[1:]
     if "--check" in args:                    # 토큰 점검: 값은 출력하지 않고 계정 조회만
         tok = os.environ.get("INSTAGRAM_ACCESS_TOKEN", "").strip().strip('"').strip("'")
-        print(f"토큰 길이 {len(tok)}, 앞 3글자 형태 {'EAA' if tok.startswith('EAA') else '다름'}")
+        print(f"토큰 길이 {len(tok)}, 형태 {'정상(EA로 시작)' if tok.startswith('EA') else '이상'}")
         r = call("GET", IG, fields="username")
         print("토큰 정상: 계정", r.get("username")); return
     today = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=9)).strftime("%Y-%m-%d")
