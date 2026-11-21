@@ -49,7 +49,8 @@ def fb_publish(page, item):
 def publish(item):
     url = BASE + urllib.parse.quote(item["file"])
     if item["type"] == "REELS":
-        c = call("POST", f"{IG}/media", media_type="REELS", video_url=url, caption=item["caption"], share_to_feed="true")
+        c = call("POST", f"{IG}/media", media_type="REELS", video_url=url, caption=item["caption"], share_to_feed="true",
+                 thumb_offset=str(item.get("thumb_ms", 10000)))   # 표지: 내용이 다 나온 10초 지점
     else:
         c = call("POST", f"{IG}/media", image_url=url, caption=item["caption"])
     cid = c["id"]
