@@ -149,6 +149,15 @@
  {
   "date": "2026-11-22",
   "slot": "morning",
+  "type": "STORIES",
+  "file": "story/redo_q3.jpg",
+  "status": "pending",
+  "caption": "",
+  "redo": true
+ },
+ {
+  "date": "2026-11-22",
+  "slot": "morning",
   "type": "REELS",
   "file": "news/rn1.mp4",
   "status": "pending",
