@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """렉스노트 인스타그램 자동 게시. queue.json에서 오늘(한국 시각) 몫을 찾아 올린다.
-사용: python3 sns/post.py [--date YYYY-MM-DD] [--slot morning|evening] [--dry] [--check]
+사용: python3 sns/post.py [--date YYYY-MM-DD] [--slot morning|evening] [--dry] [--check] [--redo]
 오전 몫은 slot 없음 또는 "morning", 저녁 몫(생활 법률상식)은 slot "evening".
 토큰: 환경 변수 INSTAGRAM_ACCESS_TOKEN (시스템 사용자 토큰, 만료 없음)
 페이스북: 같은 토큰으로 me/accounts에 페이지가 보이면 그 페이지에도 같은 글·미디어를 올린다.
@@ -80,6 +80,7 @@ def main():
     q = json.load(open(QF, encoding="utf-8"))
     todo = [x for x in q if x["date"] == today and x["status"] == "pending"
             and x.get("slot", "morning") == slot]
+    if "--redo" in args: todo = [x for x in todo if x.get("redo")]   # 다시 만든 영상만 먼저
     if not todo:
         left = [x["date"] for x in q if x["status"] == "pending" and x.get("slot", "morning") == slot]
         print(f"{today} {slot}: 올릴 것 없음. 남은 예약 {len(left)}건 {left[:3]}"); return
