@@ -151,36 +151,48 @@
   "slot": "morning",
   "type": "STORIES",
   "file": "story/redo_day01.jpg",
-  "status": "pending",
+  "status": "posted",
   "caption": "",
-  "redo": true
+  "redo": true,
+  "media_id": "17967961071238565",
+  "permalink": "https://www.instagram.com/stories/lex_note_/4035410824482551753",
+  "posted_at": "2026-11-21T16:28:06.770105+00:00"
  },
  {
   "date": "2026-11-22",
   "slot": "morning",
   "type": "STORIES",
   "file": "story/redo_qday02.jpg",
-  "status": "pending",
+  "status": "posted",
   "caption": "",
-  "redo": true
+  "redo": true,
+  "media_id": "17926333692224896",
+  "permalink": "https://www.instagram.com/stories/lex_note_/4035410895752210579",
+  "posted_at": "2026-11-21T16:28:21.116048+00:00"
  },
  {
   "date": "2026-11-22",
   "slot": "morning",
   "type": "STORIES",
   "file": "story/redo_q3.jpg",
-  "status": "pending",
+  "status": "posted",
   "caption": "",
-  "redo": true
+  "redo": true,
+  "media_id": "18287109748291591",
+  "permalink": "https://www.instagram.com/stories/lex_note_/4035411018846650864",
+  "posted_at": "2026-11-21T16:28:29.341043+00:00"
  },
  {
   "date": "2026-11-22",
   "slot": "morning",
   "type": "STORIES",
   "file": "story/redo_q4.jpg",
-  "status": "pending",
+  "status": "posted",
   "caption": "",
-  "redo": true
+  "redo": true,
+  "media_id": "17928322218204929",
+  "permalink": "https://www.instagram.com/stories/lex_note_/4035411086987376124",
+  "posted_at": "2026-11-21T16:28:38.985953+00:00"
  },
  {
   "date": "2026-11-22",
