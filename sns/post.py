@@ -49,7 +49,7 @@ def fb_publish(page, item):
 def publish(item):
     url = BASE + urllib.parse.quote(item["file"])
     if item["type"] == "REELS":
-        c = call("POST", f"{IG}/media", media_type="REELS", video_url=url, caption=item["caption"], share_to_feed="true",
+        c = call("POST", f"{IG}/media", media_type="REELS", video_url=url, caption=item["caption"], share_to_feed="true" if item.get("feed") else "false",
                  thumb_offset=str(item.get("thumb_ms", 10000)))   # 표지: 내용이 다 나온 10초 지점
     elif item["type"] == "STORIES":            # 스토리: 세로 이미지 한 장(글 없음)
         c = call("POST", f"{IG}/media", media_type="STORIES", image_url=url)
