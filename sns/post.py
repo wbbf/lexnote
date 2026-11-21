@@ -51,6 +51,8 @@ def publish(item):
     if item["type"] == "REELS":
         c = call("POST", f"{IG}/media", media_type="REELS", video_url=url, caption=item["caption"], share_to_feed="true",
                  thumb_offset=str(item.get("thumb_ms", 10000)))   # 표지: 내용이 다 나온 10초 지점
+    elif item["type"] == "STORIES":            # 스토리: 세로 이미지 한 장(글 없음)
+        c = call("POST", f"{IG}/media", media_type="STORIES", image_url=url)
     else:
         c = call("POST", f"{IG}/media", image_url=url, caption=item["caption"])
     cid = c["id"]
@@ -88,7 +90,7 @@ def main():
         x.update(status="posted", media_id=mid, permalink=link,
                  posted_at=datetime.datetime.now(datetime.timezone.utc).isoformat())
         print("게시 완료:", x["file"], link)
-        if page:
+        if page and x["type"] != "STORIES":
             fid = fb_publish(page, x)
             if fid: x["fb_id"] = fid; print("페이스북 게시 완료:", fid)
     json.dump(q, open(QF, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
