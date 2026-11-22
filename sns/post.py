@@ -3,7 +3,7 @@
 사용: python3 sns/post.py [--date YYYY-MM-DD] [--slot morning|evening] [--dry] [--check] [--redo]
 오전 몫은 slot 없음 또는 "morning", 저녁 몫(생활 법률상식)은 slot "evening".
 토큰: 환경 변수 INSTAGRAM_ACCESS_TOKEN (시스템 사용자 토큰, 만료 없음)
-페이스북: 같은 토큰으로 me/accounts에 페이지가 보이면 그 페이지에도 같은 글·미디어를 올린다.
+페이스북: 올리지 않는다(사용자 2026-11-22 결정). --fb 를 줄 때만 페이지에도 올린다.
 사진·영상은 GitHub Pages 공개 주소에서 인스타그램이 가져간다(먼저 push 되어 있어야 함)."""
 import json, os, sys, time, urllib.request, urllib.parse, datetime
 IG = "17841461039387412"          # lex__note
@@ -73,7 +73,7 @@ def main():
         print(f"토큰 길이 {len(tok)}, 형태 {'정상(EA로 시작)' if tok.startswith('EA') else '이상'}")
         r = call("GET", IG, fields="username")
         print("토큰 정상: 계정", r.get("username"))
-        pg = fb_page(); print("페이스북 페이지:", pg[2] if pg else "연결 안 됨(인스타만 게시)"); return
+        print("페이스북: 게시 안 함(--fb 줄 때만)"); return
     today = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=9)).strftime("%Y-%m-%d")
     if "--date" in args: today = args[args.index("--date") + 1]
     slot = args[args.index("--slot") + 1] if "--slot" in args else "morning"
@@ -84,7 +84,7 @@ def main():
     if not todo:
         left = [x["date"] for x in q if x["status"] == "pending" and x.get("slot", "morning") == slot]
         print(f"{today} {slot}: 올릴 것 없음. 남은 예약 {len(left)}건 {left[:3]}"); return
-    page = None if "--dry" in args else fb_page()
+    page = fb_page() if ("--fb" in args and "--dry" not in args) else None
     for x in todo:
         if "--dry" in args: print("올릴 예정:", x["file"]); continue
         mid, link = publish(x)
