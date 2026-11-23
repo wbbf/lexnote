@@ -347,25 +347,34 @@
   "type": "REELS",
   "file": "w1/rday03.mp4",
   "caption": "등기 서류는 표를 새로 그리지 않습니다.\n인터넷등기소 신청서 서식 원본에 사건 내용을 채워 hwpx로 만들어, 손으로 다시 맞출 일을 줄였습니다.\n\n#렉스노트 #법무사 #법무사사무소 #사무장 #등기 #업무자동화",
-  "status": "pending",
+  "status": "posted",
   "slot": "morning",
-  "thumb_ms": 14666
+  "thumb_ms": 14666,
+  "media_id": "18103525883551246",
+  "permalink": "https://www.instagram.com/reel/DgGhB0nzywN/",
+  "posted_at": "2026-11-23T23:03:59.580219+00:00"
  },
  {
   "date": "2026-11-24",
   "type": "IMAGE",
   "file": "w1/day03.jpg",
   "caption": "등기 서류는 표를 새로 그리지 않습니다.\n인터넷등기소 신청서 서식 원본에 사건 내용을 채워 hwpx로 만들어, 손으로 다시 맞출 일을 줄였습니다.\n\n#렉스노트 #법무사 #법무사사무소 #사무장 #등기 #업무자동화",
-  "status": "pending",
-  "slot": "morning"
+  "status": "posted",
+  "slot": "morning",
+  "media_id": "18113015345522447",
+  "permalink": "https://www.instagram.com/p/DgGhGialHBs/",
+  "posted_at": "2026-11-23T23:04:08.161006+00:00"
  },
  {
   "date": "2026-11-24",
   "slot": "morning",
   "type": "STORIES",
   "file": "story/w1_rday03.jpg",
-  "status": "pending",
-  "caption": ""
+  "status": "posted",
+  "caption": "",
+  "media_id": "18202316272386248",
+  "permalink": "https://www.instagram.com/stories/lex_note_/4037059776261203136",
+  "posted_at": "2026-11-23T23:04:18.155053+00:00"
  },
  {
   "date": "2026-11-24",
