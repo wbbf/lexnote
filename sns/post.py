@@ -11,6 +11,15 @@ API = "https://graph.facebook.com/v21.0"
 BASE = "https://wbbf.github.io/lexnote/sns/"
 HERE = os.path.dirname(os.path.abspath(__file__))
 QF = os.path.join(HERE, "queue.json")
+# 홈페이지 안내(사용자 2026-11-26 요청). 캡션 속 주소는 눌리지 않으므로 프로필 링크로 안내.
+SITE = "▶ 렉스노트 30일 무료 체험: lexnote.co.kr\n프로필 링크를 누르면 홈페이지로 바로 갑니다."
+
+def with_site(caption):
+    """캡션의 해시태그 묶음 바로 앞에 홈페이지 안내를 넣는다. 이미 있으면 그대로."""
+    if not caption or "lexnote.co.kr" in caption: return caption
+    i = caption.rfind("\n\n#")
+    if i < 0: return caption.rstrip() + "\n\n" + SITE
+    return caption[:i] + "\n\n" + SITE + caption[i:]
 
 def call(method, path, **params):
     tok = os.environ.get("INSTAGRAM_ACCESS_TOKEN", "").strip().strip('"').strip("'")
@@ -37,9 +46,9 @@ def fb_publish(page, item):
     pid, ptok, _ = page
     url = BASE + urllib.parse.quote(item["file"])
     if item["type"] == "REELS":
-        params = dict(file_url=url, description=item["caption"], access_token=ptok); path = f"{pid}/videos"
+        params = dict(file_url=url, description=with_site(item["caption"]), access_token=ptok); path = f"{pid}/videos"
     else:
-        params = dict(url=url, message=item["caption"], access_token=ptok); path = f"{pid}/photos"
+        params = dict(url=url, message=with_site(item["caption"]), access_token=ptok); path = f"{pid}/photos"
     req = urllib.request.Request(f"{API}/{path}", data=urllib.parse.urlencode(params).encode(), method="POST")
     try:
         with urllib.request.urlopen(req, timeout=300) as r: return json.load(r).get("id")
@@ -49,12 +58,12 @@ def fb_publish(page, item):
 def publish(item):
     url = BASE + urllib.parse.quote(item["file"])
     if item["type"] == "REELS":
-        c = call("POST", f"{IG}/media", media_type="REELS", video_url=url, caption=item["caption"], share_to_feed="true" if item.get("feed") else "false",
+        c = call("POST", f"{IG}/media", media_type="REELS", video_url=url, caption=with_site(item["caption"]), share_to_feed="true" if item.get("feed") else "false",
                  thumb_offset=str(item.get("thumb_ms", 10000)))   # 표지: 내용이 다 나온 10초 지점
     elif item["type"] == "STORIES":            # 스토리: 세로 이미지 한 장(글 없음)
         c = call("POST", f"{IG}/media", media_type="STORIES", image_url=url)
     else:
-        c = call("POST", f"{IG}/media", image_url=url, caption=item["caption"])
+        c = call("POST", f"{IG}/media", image_url=url, caption=with_site(item["caption"]))
     cid = c["id"]
     for _ in range(60):                       # 최대 10분 처리 대기
         s = call("GET", cid, fields="status_code,status")
