@@ -587,25 +587,34 @@
   "type": "REELS",
   "file": "w1/rday04.mp4",
   "caption": "취득세·등록면허세·국민주택채권·송달료를 현행 법령과 대법원 예규 기준으로 계산합니다.\n근거 법령이 개정되면 알려 줍니다.\n\n#렉스노트 #법무사 #법무사사무소 #사무장 #등기 #업무자동화",
-  "status": "pending",
+  "status": "posted",
   "slot": "morning",
-  "thumb_ms": 16666
+  "thumb_ms": 16666,
+  "media_id": "18384272977243405",
+  "permalink": "https://www.instagram.com/reel/DgOPetKBnJN/",
+  "posted_at": "2026-11-26T23:04:27.597033+00:00"
  },
  {
   "date": "2026-11-27",
   "type": "IMAGE",
   "file": "w1/day04.jpg",
   "caption": "취득세·등록면허세·국민주택채권·송달료를 현행 법령과 대법원 예규 기준으로 계산합니다.\n근거 법령이 개정되면 알려 줍니다.\n\n#렉스노트 #법무사 #법무사사무소 #사무장 #등기 #업무자동화",
-  "status": "pending",
-  "slot": "morning"
+  "status": "posted",
+  "slot": "morning",
+  "media_id": "18001483238829259",
+  "permalink": "https://www.instagram.com/p/DgOPishiT4p/",
+  "posted_at": "2026-11-26T23:04:37.746242+00:00"
  },
  {
   "date": "2026-11-27",
   "slot": "morning",
   "type": "STORIES",
   "file": "story/w1_rday04.jpg",
-  "status": "pending",
-  "caption": ""
+  "status": "posted",
+  "caption": "",
+  "media_id": "18115054373216365",
+  "permalink": "https://www.instagram.com/stories/lex_note_/4039234348603813418",
+  "posted_at": "2026-11-26T23:04:46.857284+00:00"
  },
  {
   "date": "2026-11-27",
