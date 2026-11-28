@@ -2291,5 +2291,69 @@
   "file": "story/claude_03.jpg",
   "caption": "",
   "status": "pending"
+ },
+ {
+  "date": "2026-12-06",
+  "slot": "lunch",
+  "type": "IMAGE",
+  "file": "grow/g01.jpg",
+  "caption": "오늘의 불편이, 다음 판의 기능이 됩니다.\n쓰다가 아쉬운 점은 프로그램 안 [의견 보내기]로 알려 주세요. 보내 주신 의견을 검토해 다음 판을 정하고, 새 기능은 매주 월요일 업데이트됩니다.\n그림 속 흐름은 예시입니다.\n\n#렉스노트 #법무사 #법무사사무소 #사무장 #업무프로그램 #업데이트",
+  "status": "pending"
+ },
+ {
+  "date": "2026-12-06",
+  "slot": "lunch",
+  "type": "STORIES",
+  "file": "story/grow_01.jpg",
+  "caption": "",
+  "status": "pending"
+ },
+ {
+  "date": "2026-12-08",
+  "slot": "lunch",
+  "type": "IMAGE",
+  "file": "grow/g02.jpg",
+  "caption": "쓸수록, 우리 사무소에 맞춰 자랍니다.\n자료 둘 곳(NAS·공유 폴더·내 PC), 사무소 정보와 직인, 송달료 단가까지. 같은 렉스노트라도 사무소마다 방식대로 맞춰 둡니다.\n화면은 예시입니다.\n\n#렉스노트 #법무사 #법무사사무소 #사무장 #업무프로그램 #업데이트",
+  "status": "pending"
+ },
+ {
+  "date": "2026-12-08",
+  "slot": "lunch",
+  "type": "STORIES",
+  "file": "story/grow_02.jpg",
+  "caption": "",
+  "status": "pending"
+ },
+ {
+  "date": "2026-12-10",
+  "slot": "lunch",
+  "type": "IMAGE",
+  "file": "grow/g03.jpg",
+  "caption": "완성된 프로그램이 아니라, 함께 자라는 동료입니다.\n현장에서 매일 쓰며 고치고, 고친 것을 다시 씁니다. 지금 1.0.708까지 판을 올린 것만 600번이 넘습니다.\n판 번호는 이 사무소에서 쓰는 판 기준이며, 고객용 판은 모아서 매주 월요일 나갑니다.\n\n#렉스노트 #법무사 #법무사사무소 #사무장 #업무프로그램 #업데이트",
+  "status": "pending"
+ },
+ {
+  "date": "2026-12-10",
+  "slot": "lunch",
+  "type": "STORIES",
+  "file": "story/grow_03.jpg",
+  "caption": "",
+  "status": "pending"
+ },
+ {
+  "date": "2026-12-12",
+  "slot": "lunch",
+  "type": "IMAGE",
+  "file": "grow/g04.jpg",
+  "caption": "사무소가 자라는 만큼, 렉스노트도 자랍니다.\nPC 3대 기본에서 10대 확장까지, 사무소 규모에 맞춰 늘려 쓰면 됩니다. 어느 요금제든 매주 월요일 새 기능이 업데이트됩니다.\n\n#렉스노트 #법무사 #법무사사무소 #사무장 #업무프로그램 #업데이트",
+  "status": "pending"
+ },
+ {
+  "date": "2026-12-12",
+  "slot": "lunch",
+  "type": "STORIES",
+  "file": "story/grow_04.jpg",
+  "caption": "",
+  "status": "pending"
  }
 ]
